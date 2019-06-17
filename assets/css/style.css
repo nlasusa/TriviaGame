@@ -1,0 +1,59 @@
+body {
+   background-color: #CF8FEF;
+   font-family: 'Mali', 'cursive';
+}
+
+header {
+   font-family: 'Permanent Marker', cursive;
+   color: black;
+   font-size: 60px;
+   text-align: center;
+   margin: 0 auto; 
+   border-style: double;
+   border-color: #EDE850;
+   border-width: 35px;
+}
+
+.btn {
+   margin-top: 5%;
+   background-color: #EDE850;
+   color: black;
+   border: none;
+}
+
+.btn:hover{
+   background-color: black;
+   color: white;
+   border: none;
+}
+
+.wrapper {
+   margin: 10px auto;
+   background-color: rgba(255, 255, 255, 0.7);
+   border: 4px solid #EDE850;
+   height: 500px;
+   width: 60%;
+   text-align: center;
+ }
+
+#answerblock {
+   text-align: center;
+ 
+ }
+ 
+ #questionblock {
+   text-align: center;
+   font-weight: bold;
+ }
+
+ .answerchoice {
+	border: 1px solid black;
+   padding: 10px;
+	width: 40%;
+	color: black;
+   text-align: center;
+   margin: 10px auto;
+   font-size: 20px;
+   background-color: white;
+
+}
