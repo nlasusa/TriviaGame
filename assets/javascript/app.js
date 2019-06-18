@@ -1,5 +1,6 @@
 $(document).ready(function () {
 
+	//my variable options listing an array of objects which contain Q's, choices, answers & a photo
     var options = [
     {
 		question: "What was the original name of the show?", 
@@ -38,6 +39,7 @@ $(document).ready(function () {
         photo: "assets/images/hootie.jpg"  
 }];
 
+// other variables 
 var correctCount = 0;
 var wrongCount = 0;
 var unansweredCount = 0;
@@ -84,7 +86,7 @@ if (timer === 0) {
 }
 }
 
-//timer stop
+//timer stop and clear 
 function stop() {
 	running = false;
 	clearInterval(intervalId);
@@ -92,7 +94,7 @@ function stop() {
 
 //pick a question from our array 
 function displayQuestion() {
-	//random index in array
+	//random index in array, can change each time user plays again
 	index = Math.floor(Math.random()*options.length);
     pick = options[index];
     
