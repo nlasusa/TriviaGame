@@ -31,9 +31,33 @@ $(document).ready(function () {
         choice: ["Ross", "Chandler", "Phoebe", "Gunther"],
         answer: 2,
         photo: "assets/images/homelessphoebe.jpg"    
-     },
+	 },
+	 {
+		question: "On what holiday did Chandler first tell Monica that he loved her?", 
+        choice: ["Valentine's Day", "Halloween", "Thanksgiving", "Christmas"],
+        answer: 2,
+        photo: "assets/images/iloveyou.jpeg"   
+	 },
+	 { 
+        question: "What is the name of Phoebe's alter-ego?", 
+        choice: ["Regina Falange", "Elaine Benes", "Renee Kitty", "Phoebe Neeby"],
+        answer: 0,
+		photo: "assets/images/reginaf.jpg"  
+	 },
      { 
-        question: "Which band do Ross, Chandler and Monica go to see for Ross' birthday ?", 
+		question: "What is Chandler's middle name?", 
+        choice: ["Kim", "Dennis", "Muriel", "Sydney"],
+        answer: 2,
+		photo: "assets/images/chandlermuriel.jpg"  
+	 },
+	 {
+		question: "What pet did Ross own?", 
+        choice: ["A lizard named Alistair", "A monkey named Marcel", "A dog named Noodle", "A rabbit named Lancelot"],
+        answer: 1,
+        photo: "assets/images/marcel.png"  
+	 },
+	 {
+        question: "Which band do Ross, Chandler and Monica go to see for Ross' birthday?", 
         choice: ["Pearl Jam", "Hootie and the Blowfish", "Barenaked Ladies", "Sugar Ray"],
         answer: 1,
         photo: "assets/images/hootie.jpg"  
@@ -54,13 +78,15 @@ var newArray = [];
 var holder = [];
 
 $("#reset").hide();
+
 // click start button to start the game 
 $("#start").on("click", function () {
-    $("#start").hide();
+	$("#start").hide();
+	$("#friends").hide();
     displayQuestion();
     runTimer();
     for(var i = 0; i < options.length; i++) {
-holder.push(options[i]);
+	holder.push(options[i]);
 }
 })
 
@@ -78,7 +104,7 @@ function decrement() {
     timer --;
     
 //if timer is out and reaches 0 
-if (timer === 0) {
+if (timer === -1) {
     unansweredCount++;
     stop();
     $("#answerblock").html("<p>Time up! The correct answer is: " + pick.choice[pick.answer] + "</p>");
@@ -98,25 +124,21 @@ function displayQuestion() {
 	index = Math.floor(Math.random()*options.length);
     pick = options[index];
     
-    //	if (pick.shown) {
-//		//recursive to continue to generate new index until one is chosen that has not shown in this game yet
-//		displayQuestion();
-//	} else {
-//		console.log(pick.question);
-		//iterate through answer array and display
-		$("#questionblock").html("<h2>" + pick.question + "</h2>");
-		for(var i = 0; i < pick.choice.length; i++) {
-			var userChoice = $("<div>");
-			userChoice.addClass("answerchoice");
-			userChoice.html(pick.choice[i]);
-			//assign array position to it so can check answer
-			userChoice.attr("data-guessvalue", i);
-			$("#answerblock").append(userChoice);
-//		}
+    	
+//generate new index until one is chosen that has not shown in this game
+//iterate through answer array and display
+	$("#questionblock").html("<h2>" + pick.question + "</h2>");
+	for(var i = 0; i < pick.choice.length; i++) {
+	var userChoice = $("<div>");
+	userChoice.addClass("answerchoice");
+	userChoice.html(pick.choice[i]);
+//assign array position to it so can check answer
+	userChoice.attr("data-guessvalue", i);
+	$("#answerblock").append(userChoice);
 }
 
 // /click function to select answer and outcomes
-$(".answerchoice").on("click", function () {
+	$(".answerchoice").on("click", function () {
 	//grab array position from userGuess
 	userGuess = parseInt($(this).attr("data-guessvalue"));
 
@@ -138,8 +160,7 @@ $(".answerchoice").on("click", function () {
 })
 }
 
-
-function hidepicture () {
+	function hidepicture () {
 	$("#answerblock").append("<img src=" + pick.photo + ">");
 	newArray.push(pick);
 	options.splice(index,1);
@@ -148,7 +169,7 @@ function hidepicture () {
 		$("#answerblock").empty();
 		timer= 6;
 
-	//run the score screen if all questions answered
+//run the score screen if all questions answered
 	if ((wrongCount + correctCount + unansweredCount) === questionCount) {
 		$("#questionblock").empty();
 		$("#questionblock").html("<h3>Game Over!  Here's how you did: </h3>");
@@ -169,7 +190,7 @@ function hidepicture () {
 
 
 }
-$("#reset").on("click", function() {
+	$("#reset").on("click", function() {
 	$("#reset").hide();
 	$("#answerblock").empty();
 	$("#questionblock").empty();
